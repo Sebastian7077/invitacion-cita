@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solicitud de cita 💻</title>
+<style>
+:root{
+  --bg:#0d1117;
+  --panel:#161b22;
+  --border:#30363d;
+  --text:#e6edf3;
+  --muted:#8b949e;
+  --accent:#58a6ff;
+  --ok:#3fb950;
+  --danger:#f85149;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  background:var(--bg);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.window{
+  width:min(680px,100%);
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+.topbar{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 16px;
+  border-bottom:1px solid var(--border);
+}
+.dot{width:12px;height:12px;border-radius:50%}
+.red{background:#ff5f56}.yellow{background:#ffbd2e}.green{background:#27c93f}
+.filename{margin-left:8px;color:var(--muted);font-size:13px}
+main{padding:24px}
+.code{color:var(--muted);line-height:1.65;margin-bottom:20px}
+.keyword{color:#ff7b72}.func{color:#d2a8ff}.str{color:#a5d6ff}.bool{color:#79c0ff}
+h1{font-size:24px;margin:0 0 12px}
+.lead{color:var(--muted);line-height:1.5;margin-bottom:24px}
+fieldset{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  margin:0 0 16px;
+}
+legend{padding:0 8px;color:var(--accent)}
+label.option{
+  display:block;
+  padding:10px 0;
+  cursor:pointer;
+}
+input[type=radio],input[type=checkbox]{margin-right:10px}
+select,textarea{
+  width:100%;
+  background:#0d1117;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:11px 12px;
+  font:inherit;
+  font-size:16px;
+}
+textarea{min-height:90px;resize:vertical}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+button{
+  border:0;border-radius:8px;padding:12px 16px;
+  font:inherit;font-weight:700;cursor:pointer;
+}
+.primary{background:var(--ok);color:#08120b}
+.secondary{background:#21262d;color:var(--text);border:1px solid var(--border)}
+.result{
+  margin-top:20px;padding:16px;border:1px solid var(--border);
+  border-radius:10px;background:#0d1117;display:none;
+}
+.result pre{white-space:pre-wrap;margin:0;color:var(--text);line-height:1.5}
+.small{font-size:12px;color:var(--muted);margin-top:16px}
+@media(max-width:520px){main{padding:18px}h1{font-size:20px}}
+</style>
+</head>
+<body>
+<section class="window">
+  <div class="topbar">
+    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+    <span class="filename">date_request.py</span>
+  </div>
+  <main>
+    <div class="code">
+      <span class="keyword">def</span> <span class="func">invitar_a_una_cita</span>():<br>
+      &nbsp;&nbsp;compania = <span class="str">"la tuya"</span><br>
+      &nbsp;&nbsp;intencion = <span class="str">"pasarlo bien juntos"</span><br>
+      &nbsp;&nbsp;<span class="keyword">return</span> <span class="bool">True</span> <span class="keyword">if</span> aceptas <span class="keyword">else</span> <span class="str">"igual me caes bien 😌"</span>
+    </div>
+
+    <h1>Tengo una propuesta para ti 👀</h1>
+    <p class="lead">
+      En vez de mandarte el típico “¿qué quieres hacer?”, preparé un pequeño formulario.
+      Prometo que tiene menos bugs que mis intentos de elegir dónde comer.
+    </p>
+
+    <form id="inviteForm">
+      <fieldset>
+        <legend>1. ¿Aceptas una cita conmigo?</legend>
+        <label class="option"><input type="radio" name="acepta" value="Sí, acepto 😌" required> Sí, acepto 😌</label>
+        <label class="option"><input type="radio" name="acepta" value="Acepto, pero quiero ver el resto del formulario primero 👀"> Acepto, pero quiero ver el resto primero 👀</label>
+        <label class="option"><input type="radio" name="acepta" value="Esta build no pasa a producción 😂"> Esta build no pasa a producción 😂</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Elige el tipo de comida</legend>
+        <select name="comida" required>
+          <option value="">Selecciona una opción</option>
+          <option>Italiana 🍝</option>
+          <option>Sushi 🍣</option>
+          <option>Hamburguesas 🍔</option>
+          <option>Mexicana 🌮</option>
+          <option>Comida asiática 🥢</option>
+          <option>Algo rico y elegir juntos</option>
+          <option>Sorpréndeme</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Tipo de panorama</legend>
+        <label class="option"><input type="radio" name="panorama" value="Cena + conversación" required> Cena + conversación</label>
+        <label class="option"><input type="radio" name="panorama" value="Comer + caminar"> Comer + caminar</label>
+        <label class="option"><input type="radio" name="panorama" value="Algo entretenido + comida"> Algo entretenido + comida</label>
+        <label class="option"><input type="radio" name="panorama" value="Tú planificas, yo confío"> Tú planificas, yo confío</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Horario preferido</legend>
+        <select name="horario" required>
+          <option value="">Selecciona una opción</option>
+          <option>Después del trabajo</option>
+          <option>Tipo 19:00</option>
+          <option>Tipo 20:00</option>
+          <option>Más tarde</option>
+          <option>Lo coordinamos</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>5. Parámetros adicionales</legend>
+        <textarea name="comentario" placeholder="Ej: sin cilantro, quiero postre, lugar tranquilo, sorpréndeme..."></textarea>
+      </fieldset>
+
+      <div class="actions">
+        <button class="primary" type="submit">Compilar respuesta ▶</button>
+        <button class="secondary" type="reset">Reset</button>
+      </div>
+    </form>
+
+    <section class="result" id="result" aria-live="polite">
+      <pre id="output"></pre>
+      <div class="actions">
+        <button class="primary" type="button" id="shareBtn">Compartir respuesta</button>
+      </div>
+    </section>
+
+    <p class="small">// No se recopilan datos. Todo ocurre localmente en esta página.</p>
+  </main>
+</section>
+
+<script>
+const form = document.getElementById('inviteForm');
+const result = document.getElementById('result');
+const output = document.getElementById('output');
+const shareBtn = document.getElementById('shareBtn');
+
+function makeText(data){
+  return `💻 Resultado de date_request.py
+
+¿Acepta?: ${data.get('acepta')}
+Comida: ${data.get('comida')}
+Panorama: ${data.get('panorama')}
+Horario: ${data.get('horario')}
+Comentario: ${data.get('comentario') || 'Sin parámetros adicionales'}
+
+Estado: respuesta compilada correctamente ✅`;
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const text = makeText(new FormData(form));
+  output.textContent = text;
+  result.style.display = 'block';
+  result.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+
+shareBtn.addEventListener('click', async () => {
+  const text = output.textContent;
+  if (navigator.share) {
+    try { await navigator.share({title:'Respuesta a la cita', text}); }
+    catch (_) {}
+  } else {
+    alert('Tu navegador no permite compartir directamente. Selecciona y copia la respuesta.');
+  }
+});
+</script>
+</body>
+</html>
